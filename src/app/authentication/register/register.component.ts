@@ -152,7 +152,7 @@ export class RegisterComponent implements OnInit {
 
   save() {
     this.message = "";
-
+    this.submitted = true;
   if (this.newForm.valid) {
       return;
     }

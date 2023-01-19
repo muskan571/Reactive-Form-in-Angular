@@ -32,7 +32,7 @@
       <h5 class="card-title text-center pb-0 fs-4">{{'Title' | translate}}</h5>
     </div>
 
-    <form class="row g-3 needs-validation" novalidate [formGroup]="newForm" (ngSubmit)="save()">
+    <form class="row g-3 needs-validation" novalidate [formGroup]="newForm">
 
       <div class="form-group row mt-4">
 
@@ -194,7 +194,7 @@
           <button class="btn btn-primary w-100" type="submit" (click)="reset()">{{'Reset' | translate}}</button>
         </div>
         <div class="col-sm-2" style="text-align:left">
-          <button class="btn btn-primary w-100" type="submit">{{'Submit' | translate}}</button>
+          <button class="btn btn-primary w-100" type="submit" (click)="save()">{{'Submit' | translate}}</button>
         </div>
     </div>
 

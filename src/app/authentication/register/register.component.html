@@ -1,0 +1,204 @@
+<select class="form-select form-control select-class" #selectedLang (change)="switchLang(selectedLang.value)">
+    <option *ngFor="let language of translate.getLangs()" [value]="language" [selected]="language === translate.currentLang">
+        {{ language }}
+      </option>
+  </select>
+
+<div class="row">
+  <div class="col">
+    <!-- Message Panel list-style-type: none; -->
+    <div class="text-center">
+      <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="message && !error">
+        <i class="bi bi-check-circle me-1"></i>
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="reseterror()"></button>
+      </div>
+
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="message && error">
+        <i class="bi bi-exclamation-octagon me-1"></i>
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="reseterror()"></button>
+      </div>
+    </div>
+    <!-- Message Panel -->
+  </div>
+</div>
+
+<div class="card mb-3" style="width: 900px">
+
+  <div class="card-body">
+
+    <div class="pt-4 pb-2">
+      <h5 class="card-title text-center pb-0 fs-4">{{'Title' | translate}}</h5>
+    </div>
+
+    <form class="row g-3 needs-validation" novalidate [formGroup]="newForm" (ngSubmit)="save()">
+
+      <div class="form-group row mt-4">
+
+        <label for="yourEmail" class="col-sm-2 col-form-label">{{'Profile' | translate}}</label>
+        <div class="col-sm-4">
+          <div class="input-group has-validation">
+            <input #Image type="file" class="form-control" (change)="handleFileInput($event.target.files)" formControlName="profile" [ngClass]="{ 'is-invalid': (newForm.controls['profile'].dirty || newForm.controls['profile'].touched) && f.profile.errors, 'is-valid': (newForm.controls['profile'].dirty || newForm.controls['profile'].touched) }"/>
+            <div *ngIf="(newForm.controls['profile'].dirty || newForm.controls['profile'].touched) && f.profile.errors" class="invalid-feedback">
+              <div *ngIf="f.profile.errors.required">{{'Profile Req' | translate}}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <img width="100%" *ngIf="imageUrl" [src]="imageUrl" class="image">
+        </div>
+
+      </div>
+
+      <div class="form-group row mt-3">
+
+        <label for="yourEmail" class="col-sm-2 col-form-label">{{'Email' | translate}}</label>
+        <div class="col-sm-4">
+          <div class="input-group has-validation">
+            <input type="email" name="email" class="form-control" id="yourEmail" placeholder="{{ 'EmailPlacholder' | translate }}" maxlength="50" formControlName="email" [ngClass]="{ 'is-invalid': (newForm.controls['email'].dirty || newForm.controls['email'].touched) && f.email.errors, 'is-valid': (newForm.controls['email'].dirty || newForm.controls['email'].touched) }">
+            <div *ngIf="(newForm.controls['email'].dirty || newForm.controls['email'].touched) && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">{{'Email Req' | translate}}</div>
+              <div *ngIf="f.email.errors.pattern">{{'Email Patt' | translate}}</div>
+            </div>
+          </div>
+        </div>
+
+        <label for="yourDOB" class="col-sm-2 col-form-label">{{'Date of Birth' | translate}}</label>
+        <div class="col-sm-4">
+          <div class="input-group has-validation">
+            <input type="date" name="date" class="form-control" id="yourDOB" formControlName="dateofbirth" [max]="getToday()" [ngClass]="{ 'is-invalid': (newForm.controls['dateofbirth'].dirty || newForm.controls['dateofbirth'].touched) && f.dateofbirth.errors, 'is-valid': (newForm.controls['dateofbirth'].dirty || newForm.controls['dateofbirth'].touched) }">
+            <div *ngIf="(newForm.controls['dateofbirth'].dirty || newForm.controls['dateofbirth'].touched) && f.dateofbirth.errors" class="invalid-feedback">
+              <div *ngIf="f.dateofbirth.errors.required">{{'Date Req' | translate}}</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-group row mt-3">
+
+        <label for="yourAddress" class="col-sm-2 col-form-label">{{'Address' | translate}}<sup class="red">{{'Optional' | translate}}</sup></label>
+        <div class="col-sm-4">
+            <textarea class="form-control" id="floatingTextarea" maxlength="300" formControlName="address"></textarea>
+        </div>
+
+        <label for="yourGender" class="col-sm-2 col-form-label">{{'Gender' | translate}}<sup class="red">{{'Optional' | translate}}</sup></label>
+        <div class="col-sm-4">
+          <div class="radio" *ngFor="let gender of genders">
+            <input type="radio" [value]="gender" formControlName="gender">{{' '}}{{gender}}
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="form-group row mt-3">
+
+        <label for="yourIncome" class="col-sm-2 col-form-label">{{'Income' | translate}}<sup class="red">{{'Optional' | translate}}</sup></label>
+        <div class="col-sm-4">
+          <span class="wrapper">USD</span>
+          <input type="float" placeholder="0.00" name="income" [formControl]="amountCtrl"  [value]="amountCtrl.value | number:'1.2-2'" (keypress)="keyPressNumeric($event)" (paste)="onPaste($event)" class="form-control" id="yourIncome" maxlength="20" formControlName="income">
+        </div>
+
+        <label for="yourDOB" class="col-sm-2 col-form-label">{{'Mobile Number' | translate}}</label>
+        <div class="col-sm-4">
+          <div class="input-group has-validation">
+            <intl-input-phone
+            formControlName="phone"
+            [ngClass]="{ 'is-invalid': (newForm.controls['phone'].dirty || newForm.controls['phone'].touched) && f.phone.errors, 'is-valid': (newForm.controls['phone'].dirty || newForm.controls['phone'].touched) }"
+            [ConfigurationOption]="configOption2"
+            [CountryList]="customCountryList1"
+            (OnIsRequiredChange)="requiredFlagChange($event)"
+            (OnNumberChange)="onNumberChage($event)"
+            [NumberTextValue]="NumberModel"
+            [SelectedCountryISOCode]="SelectedCountryISOCode"
+            ></intl-input-phone>
+            <div *ngIf="(newForm.controls['phone'].dirty || newForm.controls['phone'].touched) && f.phone.errors" class="invalid-feedback">
+              <div *ngIf="f.phone.errors.required">{{'Mobile Req' | translate}}</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-group row mt-3">
+
+        <label for="yourPassword" class="col-sm-2 col-form-label">{{'Password' | translate}}</label>
+        <div class="col-sm-4">
+          <div class="input-group has-validation">
+            <input [type]="showPassword ? 'text' : 'password'" name="password" class="form-control" id="yourPassword" formControlName="password" maxlength="15" [ngClass]="{ 'is-invalid': (newForm.controls['password'].dirty || newForm.controls['password'].touched) && f.password.errors, 'is-valid': (newForm.controls['password'].dirty || newForm.controls['password'].touched) }">
+            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+              <mat-icon>
+                {{showPassword?'visibility':'visibility_off'}}
+              </mat-icon>
+            </button>
+            <div *ngIf="(newForm.controls['password'].dirty || newForm.controls['password'].touched) && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">{{'Pass Req' | translate}}</div>
+              <div *ngIf="f.password.errors.pattern">{{'Pass Patt' | translate}}</div>
+            </div>
+          </div>
+        </div>
+
+        <label for="yourPassword" class="col-sm-2 col-form-label">{{'Confirm Password' | translate}}</label>
+        <div class="col-sm-4">
+          <div class="input-group has-validation">
+            <input [type]="showre_Password ? 'text' : 'password'" name="password" class="form-control" id="yourPassword" formControlName="re_password" maxlength="15" [ngClass]="{ 'is-invalid': (newForm.controls['re_password'].dirty || newForm.controls['re_password'].touched) && f.re_password.errors, 'is-valid': (newForm.controls['re_password'].dirty || newForm.controls['re_password'].touched) }">
+            <button mat-icon-button matSuffix (click)="togglere_PasswordVisibility()">
+              <mat-icon>
+                {{showre_Password?'visibility':'visibility_off'}}
+              </mat-icon>
+            </button>
+            <div *ngIf="(newForm.controls['re_password'].dirty || newForm.controls['re_password'].touched) && f.re_password.errors" class="invalid-feedback">
+              <div *ngIf="f.re_password.errors.required">{{'Confirm Pass Req' | translate}}</div>
+              <div *ngIf="f.re_password.errors.pattern">{{'Pass Patt' | translate}}</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div formArrayName="hobby">
+        <div class="col-sm-4">
+          <label for="yourHobby" class="form-label label">{{'Hobby' | translate}}<sup class="red">{{'Optional' | translate}}</sup></label>
+          <button mat-icon-button color="primary" (click)="onAddHobby()">
+            <mat-icon>add_circle</mat-icon>
+            <span class="blue">{{'Hobby Text' | translate}}</span>
+         </button>
+        </div>
+          <div class="col-sm-4" *ngFor="let hobbyControl of hobbygetControl(); let i=index; index as idx">
+            <input type="text" maxlength="100" class="form-control field" [formControlName]="i">
+            <button mat-icon-button color="warn" class="removebutton" *ngIf="hobbygetControl().length > 1" (click)="removeInputControl(idx)">
+              <mat-icon>remove_circle</mat-icon>
+            </button>
+          </div>
+      </div>
+
+      <div class="col-12">
+        <div class="custom-control custom-checkbox input-group has-validation">
+            <input type="checkbox" class="custom-control-input checkbox-field" required formControlName="rememberMe" id="customCheck1" [ngClass]="{ 'is-invalid': (newForm.controls['rememberMe'].dirty || newForm.controls['rememberMe'].touched) && f.rememberMe.errors, 'is-valid': (newForm.controls['rememberMe'].dirty || newForm.controls['rememberMe'].touched) }">
+            <label class="custom-control-label" for="customCheck1">{{'Terms' | translate}}</label>
+            <div *ngIf="(newForm.controls['rememberMe'].dirty || newForm.controls['rememberMe'].touched) && f.re_password.errors" class="invalid-feedback">
+              <div *ngIf="f.rememberMe.errors.required">{{'Terms Req' | translate}}</div>
+            </div>
+        </div>
+      </div>
+
+      <div>
+
+      </div>
+
+      <div class="form-group row" style="margin-left:30%">
+        <div class="col-sm-2" style="text-align:right">
+          <button class="btn btn-primary w-100" type="submit" (click)="reset()">{{'Reset' | translate}}</button>
+        </div>
+        <div class="col-sm-2" style="text-align:left">
+          <button class="btn btn-primary w-100" type="submit">{{'Submit' | translate}}</button>
+        </div>
+    </div>
+
+    </form>
+
+  </div>
+</div>

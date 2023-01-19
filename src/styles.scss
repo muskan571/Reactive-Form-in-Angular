@@ -1,1 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
+.btn {
+  margin-right: 5px;
+}
+/*table action icons margin*/
+i.bi {
+  margin-right: 5px;
+  cursor: pointer
+}
+
+.pagination-right {
+  float: right;
+  display: flex
+}
+
+.dataTable-top > div:last-child {
+  text-align: right;
+}
+
+.dataTable-top {
+  padding: 8px 0px;
+}
+
+.form-check {
+  padding-right: 1.5rem;
+}
+
+table {
+  white-space: nowrap;
+}
+
+.td-address {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.breadcrumb-item a {
+  cursor: pointer
+}
+.red{
+  color:red;
+}
+.right-btn {
+  float: right;
+  margin-top: 12px;
+}
+a{
+  cursor: pointer;
+}
+a.text-dark:hover {
+  color: #4154f1 !important;
+}
+div.activity-content{
+    cursor:pointer
+}
+div.activity-content:hover {
+  color: #4154f1 !important;
+  cursor: pointer
+}
+.logo span {
+  font-size: 20px;
+  font-weight: 700;
+  color: #012970;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

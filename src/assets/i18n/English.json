@@ -1,0 +1,30 @@
+{
+  "Title" : "Enter your Details",
+  "Email" : "Email",
+  "Date of Birth" : "Date of Birth",
+  "Address" : "Address",
+  "Hobby" : "Hobby",
+  "Gender" : "Gender",
+  "Password" : "Password",
+  "Confirm Password" : "Confirm Password",
+  "Terms" : "I agree your Terms and Conditions.",
+  "Submit" : "Submit",
+  "Hobby Text" : "Please add hobbies as many as you want.",
+  "Optional" : "*Optional",
+
+  "Email Req" : "Email is required.",
+  "Email Patt"  : "Please enter a valid Email.",
+  "EmailPlacholder" : "email@gmail.com",
+  "Pass Req" : "Password is required.",
+  "Pass Patt" : "Minimum eight characters, at least one letter, one number and one special character.",
+  "Confirm Pass Req" : "Confirm Password is required.",
+  "Terms Req" : "Please accept our Terms and Conditions.",
+
+  "Date Req" : "Date of Birth is required.",
+  "Income" : "Annual Income",
+  "Profile" : "Upload Photo",
+  "Profile Req" : "Profile Photo is required.",
+  "Reset" : "Reset",
+  "Mobile Number" : "Mobile Number",
+  "Mobile Req" : "Mobile Number is required."
+}

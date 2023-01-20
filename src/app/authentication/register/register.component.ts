@@ -39,8 +39,8 @@ export class RegisterComponent implements OnInit {
 
   ) {
 
-    translate.addLangs(['हिन्दी', 'English']);
-    translate.setDefaultLang('हिन्दी');
+    translate.addLangs(['English', 'हिन्दी']);
+    translate.setDefaultLang('English');
 
     //config 1
     this.configOption1 = new ConfigurationOptions();
@@ -154,9 +154,9 @@ export class RegisterComponent implements OnInit {
     debugger
     this.message = "";
     this.submitted = true;
-  if (this.newForm.valid) {
-      return;
-    }
+  // if (this.newForm.valid) {
+  //     return;
+  //   }
 
   if(!this.newForm.valid) {
 
@@ -196,14 +196,5 @@ export class RegisterComponent implements OnInit {
     this.message = "";
     this.error = false;
   }
-
-  reset() {
-    this.newForm.reset();
-    this.submitted = false
-    this.message = '';
-    this.imageUrl = '';
-    this.newForm.get("gender").patchValue('Male');
-
-}
 
 }

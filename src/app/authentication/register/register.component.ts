@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
   error = false
   showPassword: boolean = false;
   showre_Password: boolean = false;
-  genders=['Male','Female', 'Prefer not to say'];
+  // genders=['Male','Female', 'Prefer not to say'];
   fileToUpload: any;
   imageUrl: any;
 

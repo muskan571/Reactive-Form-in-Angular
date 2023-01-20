@@ -26,5 +26,8 @@
   "Profile Req" : "Profile Photo is required.",
   "Reset" : "Reset",
   "Mobile Number" : "Mobile Number",
-  "Mobile Req" : "Mobile Number is required."
+  "Mobile Req" : "Mobile Number is required.",
+  "Male" : "Male",
+  "Female" : "Female",
+  "Other" : "Prefer not to say"
 }

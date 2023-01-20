@@ -86,9 +86,15 @@
 
         <label for="yourGender" class="col-sm-2 col-form-label">{{'Gender' | translate}}<sup class="red">{{'Optional' | translate}}</sup></label>
         <div class="col-sm-4">
-          <div class="radio" *ngFor="let gender of genders">
+          <!-- <div class="radio" *ngFor="let gender of genders">
             <input type="radio" [value]="gender" formControlName="gender">{{' '}}{{gender}}
-          </div>
+          </div> -->
+          <select class="form-select form-control" formControlName="gender">
+            <option value="Male">{{'Male' | translate}}</option>
+            <option>{{'Female' | translate}}</option>
+            <option>{{'Other' | translate}}</option>
+          </select>
+
         </div>
 
       </div>

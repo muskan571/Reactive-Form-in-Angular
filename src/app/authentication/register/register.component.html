@@ -81,7 +81,7 @@
 
         <label for="yourAddress" class="col-sm-2 col-form-label">{{'Address' | translate}}<sup class="red">{{'Optional' | translate}}</sup></label>
         <div class="col-sm-4">
-            <textarea class="form-control" id="floatingTextarea" maxlength="300" formControlName="address"></textarea>
+            <textarea class="form-control" (keypress)="keyPressAlphaNumeric($event)" (paste)="onPasteadd($event)" id="floatingTextarea" maxlength="300" formControlName="address"></textarea>
         </div>
 
         <label for="yourGender" class="col-sm-2 col-form-label">{{'Gender' | translate}}<sup class="red">{{'Optional' | translate}}</sup></label>

@@ -150,6 +150,26 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  keyPressAlphaNumeric(event) {
+    var inp = String.fromCharCode(event.keyCode);
+    if (/[a-zA-Z0-9-_,.#/> ]/.test(inp)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
+  }
+  onPasteadd(event: ClipboardEvent) {
+    let clipboardData = event.clipboardData;
+    let pastedText = clipboardData.getData('text');
+    if (/[a-zA-Z0-9-_,.#/> ]/.test(pastedText)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
+  }
+
   save() {
     debugger
     this.message = "";

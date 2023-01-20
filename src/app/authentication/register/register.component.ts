@@ -76,7 +76,7 @@ export class RegisterComponent implements OnInit {
       income: [''],
       password: ['', [Validators.required, Validators.pattern('(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!#^~%*?&,.<>"\'\\;:\{\\\}\\\[\\\]\\\|\\\+\\\-\\\=\\\_\\\)\\\(\\\)\\\`\\\/\\\\\\]])[A-Za-z0-9\d$@].{7,}')]],
       re_password: ['', [Validators.required, Validators.pattern('(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!#^~%*?&,.<>"\'\\;:\{\\\}\\\[\\\]\\\|\\\+\\\-\\\=\\\_\\\)\\\(\\\)\\\`\\\/\\\\\\]])[A-Za-z0-9\d$@].{7,}')]],
-      rememberMe: ['', [Validators.required]],
+      rememberMe: [true, [Validators.required]],
       phone: ['', [Validators.required]],
       profile: ['', [Validators.required]]
     }
@@ -151,6 +151,7 @@ export class RegisterComponent implements OnInit {
   }
 
   save() {
+    debugger
     this.message = "";
     this.submitted = true;
   if (this.newForm.valid) {
@@ -173,8 +174,15 @@ export class RegisterComponent implements OnInit {
     }
 
     else {
+      debugger
+      if(this.newForm.value.email === "" || this.newForm.value.dateofbirth === "" || this.newForm.value.password === "" || this.newForm.value.re_password === "") {
+        this.error = true;
+        this.message = "Please fill the required field.";
+      }
+      else {
       this.error = false;
       this.message = "";
+    }
     }
   }
 

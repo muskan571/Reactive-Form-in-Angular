@@ -12,17 +12,20 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 
+
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { IntlInputPhoneModule } from 'intl-input-phone';
+import { PageComponent } from './page/page.component';
 
 @NgModule({
   declarations: [
     AuthenticationComponent,
     RegisterComponent,
+    PageComponent,
 
   ],
   imports: [
@@ -34,7 +37,7 @@ import { IntlInputPhoneModule } from 'intl-input-phone';
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
-    
+
     IntlInputPhoneModule,
 
     HttpClientModule,

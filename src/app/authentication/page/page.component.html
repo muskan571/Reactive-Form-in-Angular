@@ -1,0 +1,115 @@
+<div id="demo">
+  <nav class="stroke">
+    <ul>
+      <li>
+          <img id="demoz" class="img" src="/assets/img/logo11.svg" height="45" alt="CoolBrand">
+      </li>
+      <li id="link1"><a href="#">{{'Services' | translate}}</a></li>
+      <li id="link2"><a href="#">{{'Who' | translate}}</a></li>
+      <li id="link3"><a href="#">{{'Work' | translate}}</a></li>
+      <li id="link4"><a href="#">{{'Live' | translate}}</a></li>
+      <li id="link5"><a href="#">{{'ContactUs' | translate}}</a></li>
+    </ul>
+  </nav>
+  <p  id="textColor" class="text-center" style="padding-top: 100px;">{{'CoolBrand' | translate}}</p>
+</div>
+
+<div class="kreep buttonPosition">
+  <button id="close" class="btn btn-primary" (click)="openPopup()">{{'Click' | translate}}</button>
+</div>
+
+
+<table id="fancy" class="hidden" style="width: 50%; margin-left: 10px;">
+  <tr>
+    <th>{{'Company' | translate}}</th>
+    <th>{{'Contact' | translate}}</th>
+    <th>{{'Country' | translate}}</th>
+  </tr>
+  <tr>
+    <td>{{'ABC' | translate}}</td>
+    <td>{{'John' | translate}}</td>
+    <td>{{'Germany' | translate}}</td>
+  </tr>
+  <tr>
+    <td>{{'XYZ' | translate}}</td>
+    <td>{{'Maria' | translate}}</td>
+    <td>{{'India' | translate}}</td>
+  </tr>
+</table>
+
+<table id="borderless" class="hidden" style="width: 30%; margin-left: 10px;">
+  <tr>
+    <th>{{'Company' | translate}}</th>
+    <th>{{'Contact' | translate}}</th>
+    <th>{{'Country' | translate}}</th>
+  </tr>
+  <tr>
+    <td>{{'ABC' | translate}}</td>
+    <td>{{'John' | translate}}</td>
+    <td>{{'Germany' | translate}}</td>
+  </tr>
+  <tr>
+    <td>{{'XYZ' | translate}}</td>
+    <td>{{'Maria' | translate}}</td>
+    <td>{{'India' | translate}}</td>
+  </tr>
+</table>
+
+
+<div class="row  modalPosition"  id="modal" style="width: 30%;" [ngStyle]="{'display':displayStyle}">
+  <div class="col-md-12 grid-margin stretch-card">
+      <div class="card">
+          <div class="card-body">
+            <div class="modal-body mt-4">
+              <div class="col m-2">
+                <p>
+                  Select Language:&nbsp;
+                  <span class="fi fi-in" title="हिन्दी" (click)="switchLang('हिन्दी')"></span>&nbsp;
+                  <span class="fi fi-us" title="English" (click)="switchLang('English')"></span>
+                </p>
+              </div>
+              <div class="col">
+                <button class="btn btn-primary m-2" aria-label="Default Font Size" (click)="accessibility($event ,'default-size')">A+</button>
+                <button class="btn btn-primary m-2" aria-label="Medium Font Size" (click)="accessibility($event ,'medium-size')">A++</button>
+                <button class="btn btn-primary m-2" aria-label="Large Font Size" (click)="accessibility($event ,'large-size')">A+++</button>
+              </div>
+              <div class="col">
+                <button class="btn btn-success m-2" aria-label="Default Letter Spacing" (click)="accessibility1($event ,'default-letter-spacing')">Space+</button>
+                <button class="btn btn-success m-2" aria-label="Medium Letter Spacing" (click)="accessibility1($event ,'medium-letter-spacing')">Space++</button>
+                <button class="btn btn-success m-2" aria-label="Large Letter Spacing" (click)="accessibility1($event ,'large-letter-spacing')">Space+++</button>
+              </div>
+              <div class="col">
+                <button class="btn btn-warning m-2" aria-label="Default Bold" (click)="accessibility2($event ,'default-bold')">Bold-</button>
+                <button class="btn btn-warning m-2" aria-label="Medium Bold" (click)="accessibility2($event ,'medium-bold')">Bold+</button>
+              </div>
+              <div class="col">
+                <button class="btn btn-info m-2" aria-label="Cell" (click)="accessibility3($event ,'cell')">Cursor+</button>
+                <button class="btn btn-info m-2" aria-label="All Scroll" (click)="accessibility3($event ,'all-scroll')">Cursor++</button>
+                <button class="btn btn-info m-2" aria-label="Grab" (click)="accessibility3($event ,'grab')">Cursor+++</button>
+              </div>
+              <div class="col">
+                <button class="btn btn-danger m-2" aria-label="Fancy Table" (click)="fancyTable()">Fancy Table</button>
+                <button class="btn btn-danger m-2" aria-label="Borderless Table" (click)="borderlessTable()">Borderless Table</button>
+              </div>
+              <div class="col">
+                <button class="btn btn-success m-2" aria-label="Highlight Link" (click)="highlightLink()">Highlight Links</button>
+              </div>
+              <div class="col">
+                <button class="btn btn-warning m-2" aria-label="Red" (click)="accessibility5($event ,'red')">Change Text Color (Red)</button>
+                <button class="btn btn-warning m-2" aria-label="Green" (click)="accessibility5($event ,'green')">Change Text Color (Green)</button>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-dark m-2" aria-label="Left" (click)="accessibility4($event ,'left')">{{'Left' | translate}}</button>
+              <button type="button" class="btn btn-dark m-2" aria-label="Right" (click)="accessibility4($event ,'right')">{{'Right' | translate}}</button>
+              <button type="button" class="btn btn-danger m-2" (click)="reset(classNameFontSize, classNameLetterSpacing, classNameBold, classNameCursor, classNameColor)">{{'Reset' | translate}}</button>
+              <button type="button" class="btn btn-danger m-2" (click)="closePopup()">{{'Close' | translate}}</button>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+

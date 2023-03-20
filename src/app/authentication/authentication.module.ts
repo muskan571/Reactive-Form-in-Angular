@@ -19,11 +19,13 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { IntlInputPhoneModule } from 'intl-input-phone';
+import { PageComponent } from './page/page.component';
 
 @NgModule({
   declarations: [
     AuthenticationComponent,
     RegisterComponent,
+    PageComponent,
 
   ],
   imports: [

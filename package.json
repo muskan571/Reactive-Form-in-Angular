@@ -24,6 +24,7 @@
     "@kolkov/angular-editor": "^2.1.0",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "flag-icons": "^6.6.6",
     "inputmask": "^5.0.7",
     "intl-input-phone": "0.0.9",
     "rxjs": "~7.5.0",

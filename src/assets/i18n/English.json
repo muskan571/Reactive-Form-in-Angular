@@ -29,5 +29,28 @@
   "Mobile Req" : "Mobile Number is required.",
   "Male" : "Male",
   "Female" : "Female",
-  "Other" : "Prefer not to say"
+  "Other" : "Prefer not to say",
+
+
+
+  "Services" : "Services",
+  "Who" : "Who We Are",
+  "Work" : "Work With Us",
+  "Live" : "Live Well Stories",
+  "ContactUs" : "Contact Us",
+  "CoolBrand" : "CoolBrand",
+  "Click" : "CLICK ME !",
+  "Contact" : "Contact",
+  "Country" : "Country",
+  "Left" : "Left",
+  "Right" : "Right",
+  "Close" : "Close",
+  "Company" : "Company",
+  "ABC" : "ABC",
+  "John" : "John",
+  "XYZ" : "XYZ",
+  "Maria" : "Maria",
+  "India" : "India",
+  "Germany" : "Germany"
+
 }

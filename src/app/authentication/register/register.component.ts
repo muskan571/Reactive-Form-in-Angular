@@ -83,6 +83,7 @@ export class RegisterComponent implements OnInit {
   );
   }
 
+
   requiredFlagChange(isRequire: boolean) {
     this.IsRequired = isRequire;
   }

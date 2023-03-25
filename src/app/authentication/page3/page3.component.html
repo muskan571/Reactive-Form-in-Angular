@@ -1,0 +1,30 @@
+<div class="center pt-5">
+  <div class="card m-5">
+    <div class="card-body">
+      <div class="pt-4 pb-4">
+        <h5 class="card-title text-center pb-0 fs-4">Get Details</h5>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th class="table-heading">Name</th>
+              <th class="table-heading">Gender</th>
+              <th class="table-heading">Hobby</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let getData of getJsonDetail">
+              <td class="table-heading">{{getData.name}}</td>
+              <td class="table-heading">{{getData.gender}}</td>
+              <td class="table-heading">{{getData.hobby}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-center">
+        <button type="submit"  class="btn btn-primary mt-5" (click)="back()">Back to Home</button>
+      </div>
+    </div>
+  </div>
+</div>

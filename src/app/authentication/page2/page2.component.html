@@ -1,0 +1,79 @@
+<div class="center1">
+  <div class="row m-5">
+    <div class="col">
+      <!-- Message Panel list-style-type: none; -->
+      <div class="text-center">
+        <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="message && !error">
+          <i class="bi bi-check-circle me-1"></i>
+          {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="reseterror()"></button>
+        </div>
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="message && error">
+          <i class="bi bi-exclamation-octagon me-1"></i>
+          {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="reseterror()"></button>
+        </div>
+      </div>
+      <!-- Message Panel -->
+    </div>
+  </div>
+
+  <div class="card m-5">
+    <div class="card-body">
+
+      <div class="pt-4 pb-4">
+        <h5 class="card-title text-center pb-0 fs-4">Enter Details</h5>
+      </div>
+
+      <form class="row g-3 needs-validation" style="margin-left: 30px;" novalidate [formGroup]="newForm">
+
+        <div *ngFor="let getData of getJsonData.form">
+
+          <div class="col-md-4 mb-2" *ngIf="getData.type=='text'">
+            <label class="col-form-label">{{getData.label}}<span class="red"> *</span></label>
+            <div class="input-group has-validation">
+              <input type="text" class="form-control inputClass" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors, 'is-valid': submitted }"/>
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12" *ngIf="getData.type=='radio'">
+            <label class="form-check-label">{{getData.label}}<span class="red"> *</span></label>
+            <div class="form-check">
+              <div *ngFor="let op of getData.options">
+                <input class="form-check-input" type="radio" id="op_ans_{{op}}" [value]='op' [(ngModel)]="radioSelected" formControlName="gender"/>{{op}}
+              </div>
+              <div class="error" *ngIf="submitted && f.gender.errors?.['required']">
+                Required
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12" *ngIf="getData.type=='checkbox'">
+            <label class="form-check-label">{{getData.label}}<span class="red"> *</span></label>
+            <div class="form-check">
+              <div *ngFor="let op of getData.options; let i=index">
+                <input  class="form-check-input" type="checkbox" [value]="op" (change)="onCheckboxChange($event)"/>
+                {{op}}
+              </div>
+              <div class="error" *ngIf="submitted && f.hobby.errors?.['required']">
+                Required
+              </div>
+            </div>
+          </div>
+
+           <div class="text-center" *ngIf="getData.type=='button'">
+            <button type="submit"  class="btn btn-primary" (click)="save()">{{getData.label}}</button>
+          </div>
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  <app-loading *ngIf="loading"></app-loading>
+</div>
